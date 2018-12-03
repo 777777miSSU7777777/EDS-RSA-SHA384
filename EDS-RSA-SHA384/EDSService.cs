@@ -38,10 +38,10 @@ namespace EDS_RSA_SHA384
             var info = "";
             var rsaParams = RSA.ExportParameters(true);
             info += "Hash: " + BitConverter.ToString(Hash) + "\r\n" +
-                "Hash size: " + Hash.Length + "\r\n" +
-                "Sign " + BitConverter.ToString(Sign) + "\r\n" +
-                "Sign size: " + Sign.Length + "\r\n" +
-                "RSA key size: " + RSA.KeySize +
+                "Hash size: " + Hash.Length * 8 + "\r\n" +
+                "Sign: " + BitConverter.ToString(Sign) + "\r\n" +
+                "Sign size: " + Sign.Length * 8 + "\r\n" +
+                "RSA key size: " + RSA.KeySize  +
                 "\r\n\r\nn: " + BitConverter.ToString(rsaParams.Modulus) +
                 "\r\n\r\ne: " + BitConverter.ToString(rsaParams.Exponent) +
                 "\r\n\r\nP: " + BitConverter.ToString(rsaParams.P) +

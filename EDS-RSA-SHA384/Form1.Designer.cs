@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TextInput = new System.Windows.Forms.TextBox();
             this.SignInfo = new System.Windows.Forms.TextBox();
             this.SignInput = new System.Windows.Forms.TextBox();
@@ -134,8 +135,9 @@
             this.Controls.Add(this.SignInput);
             this.Controls.Add(this.SignInfo);
             this.Controls.Add(this.TextInput);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "EDS-RSA-SHA384";
             this.ResumeLayout(false);
             this.PerformLayout();
 

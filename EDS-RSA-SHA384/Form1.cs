@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,28 @@ namespace EDS_RSA_SHA384
 
         }
 
+        private byte[] HexByteStringToByteArray(string str, char sep)
+        {
+            var strBytes = str.Split(sep);
+            var bytes = new byte[strBytes.Length];
+            for (int i = 0; i < strBytes.Length; i++)
+            {
+                bytes[i] = byte.Parse(strBytes[i], NumberStyles.HexNumber);
+            }
+
+            return bytes;
+        }
+
         private void VerifySign_Click(object sender, EventArgs e)
         {
-            var signBytes = Encoding.Unicode.GetBytes(SignInput.Text);
+            var signBytes = HexByteStringToByteArray(SignInput.Text, '-');
             var verified = EDSService.CheckSignature(signBytes);
             if (verified)
             {
                 SignVerificationLabel.Text = "Correct";
                 SignVerificationLabel.ForeColor = Color.Green;
-            } else
+            }
+            else
             {
                 SignVerificationLabel.Text = "Incorrect";
                 SignVerificationLabel.ForeColor = Color.Red;
